@@ -29,7 +29,7 @@ if(!birds) return <h1>...loading</h1>
   return (
     <main>
       <NewBirdForm onAddBird={handleAddBird} API_URL={API_URL}/>
-      <Search searchTerm={searchTerm} onSearchChange={setSearchTerm} API_URL={API_URL}/>
+      <Search searchTerm={searchTerm} onSearchChange={setSearchTerm} />
       <BirdList birds={displayedBirds} API_URL={API_URL}/>
     </main>
   );
