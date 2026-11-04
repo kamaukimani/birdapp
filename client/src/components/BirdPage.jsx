@@ -3,12 +3,12 @@ import NewBirdForm from "./NewBirdForm";
 import BirdList from "./BirdList";
 import Search from "./Search";
 
-function BirdPage() {
+function BirdPage({API_URL}) {
   const [birds, setBirds] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
-    fetch("/birds")
+    fetch(`${API_URL}/birds`)
       .then((r) => r.json())
       .then((birdsArray) => {
         setBirds(birdsArray);
@@ -28,9 +28,9 @@ if(!birds) return <h1>...loading</h1>
 
   return (
     <main>
-      <NewBirdForm onAddBird={handleAddBird} />
-      <Search searchTerm={searchTerm} onSearchChange={setSearchTerm} />
-      <BirdList birds={displayedBirds} />
+      <NewBirdForm onAddBird={handleAddBird} API_URL={API_URL}/>
+      <Search searchTerm={searchTerm} onSearchChange={setSearchTerm} API_URL={API_URL}/>
+      <BirdList birds={displayedBirds} API_URL={API_URL}/>
     </main>
   );
 }

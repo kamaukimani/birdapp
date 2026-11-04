@@ -1,13 +1,13 @@
 import { useState } from "react";
 
-function NewBirdForm({ onAddBird }) {
+function NewBirdForm({ onAddBird, API_URL }) {   
   const [name, setName] = useState("");
   const [species, setSpecies] = useState("");
   const [image, setImage] = useState("");
 
   function handleSubmit(e) {
     e.preventDefault();
-    fetch("/birds", {
+    fetch(`${API_URL}/birds`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

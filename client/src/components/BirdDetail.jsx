@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-function BirdDetail() {
+function BirdDetail({API_URL}) {
   let { id } = useParams();
   const [bird, setBird] = useState({});
 
   useEffect(() => {
-    fetch(`/birds/${id}`)
+    fetch(`${API_URL}/birds/${id}`)
       .then((r) => r.json())
       .then((bird) => setBird(bird));
 
