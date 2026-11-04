@@ -5,9 +5,20 @@ from .config import Config
 from .models import *
 from flask_cors import CORS
 from .routes import *
+import os
 
 def create_app():
-    app=Flask(__name__)
+    BASE_DIR = os.path.abspath(
+        os.path.join(os.path.dirname(__file__), '../../')
+    )
+
+    CLIENT_DIST = os.path.join(BASE_DIR, 'client', 'dist')
+    app=Flask(
+        __name__,
+        static_url_path='',
+        static_folder=CLIENT_DIST,
+        template_folder=CLIENT_DIST
+        )
 
     app.config.from_object(Config)
 
