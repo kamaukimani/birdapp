@@ -19,10 +19,13 @@ function NewBirdForm({ onAddBird, API_URL }) {
       }),
     })
       .then((r) => r.json())
-      .then((newBird) => onAddBird(newBird));
-    setName("");
-    setSpecies("");
-    setImage("");
+      .then((newBird) => {
+        onAddBird(newBird)
+        setName("");
+        setSpecies("");
+        setImage("");
+      });
+    
   }
 
   return (
