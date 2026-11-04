@@ -1,3 +1,4 @@
+
 :root {
   --green: rgb(39, 189, 39);
 }
@@ -58,12 +59,15 @@ main {
 
 .new-bird-form form {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
 }
 
 .new-bird-form input {
-  margin-right: 2rem;
-  flex: 1;
+  width: 100%;
+  max-width: 500px;
+  margin-right: 0;
 }
 
 .new-bird-form button {
@@ -100,7 +104,8 @@ input:focus {
   list-style: none;
 }
 
-.card, .details {
+.card,
+.details {
   margin: 1rem;
   border: 1px solid black;
   padding: 10px;
@@ -117,8 +122,8 @@ input:focus {
 .details {
   max-width: 50%;
   text-align: center;
-  margin-left: auto; 
-  margin-right: auto; 
+  margin-left: auto;
+  margin-right: auto;
   height: auto;
 }
 
