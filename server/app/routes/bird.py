@@ -1,6 +1,7 @@
 from flask_restful import Resource
 from app.models import Bird
-from flask import jsonify
+from flask import jsonify,make_response,request
+from app.db import db
 
 
 class Birds(Resource):
@@ -25,14 +26,16 @@ class Birds(Resource):
 
             new_bird=Bird(name=name,species=species,image=image)
 
+            db.session.add(new_bird)
+            db.session.commit()
+
+            response=new_bird.to_dict()
+
+            return make_response(response, 201)
+
         return {"message":"Provide data for all fields"}
 
-        db.session.add(new_bird)
-        db.session.commit()
-
-        response=new_bird.to_dict()
-
-        return make_response(response, 201)
+        
 
 
 class BirdByID(Resource):
